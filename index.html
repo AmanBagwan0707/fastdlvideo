@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Download Instagram Reels, Stories and Videos in HD - FastDLVideo" />
+  <meta name="keywords" content="Instagram Reels Downloader, Download Reels, FastDL, fastdlvideo" />
+  <meta name="author" content="fastdlvideo.com" />
+  <meta property="og:title" content="FastDLVideo - Instagram Reels Downloader" />
+  <meta property="og:description" content="Easily download Instagram Reels and Stories in HD for free." />
+  <meta property="og:image" content="https://fastdlvideo.com/og-image.jpg" />
+  <meta property="og:url" content="https://fastdlvideo.com" />
+  <title>FastDLVideo - Instagram Reels Downloader</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 0; }
+    .container { max-width: 600px; margin: 50px auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); text-align: center; }
+    input { width: 80%; padding: 10px; font-size: 16px; margin-bottom: 10px; }
+    button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+    footer { text-align: center; font-size: 12px; padding: 20px; }
+  </style>
+</head>
+<body>
+  <!-- Google AdSense Ad Slot (Top) -->
+
+  <div class="container">
+    <h1>Instagram Reels Downloader</h1>
+    <input type="text" id="instaUrl" placeholder="Paste Instagram reel link here..." />
+    <br />
+    <button onclick="downloadReel()">Download</button>
+    <div id="output"></div>
+  </div>
+
+  <!-- Google AdSense Ad Slot (Mid Content) -->
+
+  <footer>
+    <p>&copy; 2025 fastdlvideo.com | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms</a> | <a href="contact.html">Contact</a></p>
+  </footer>
+
+  <!-- Google AdSense Ad Slot (Footer) -->
+
+  <script>
+    function downloadReel() {
+      const url = document.getElementById("instaUrl").value;
+      if (!url || !url.includes("instagram.com")) {
+        alert("Please enter a valid Instagram URL");
+        return;
+      }
+
+      fetch(`https://instagram-downloader-download-instagram-videos-stories-reels.p.rapidapi.com/index?url=${encodeURIComponent(url)}`, {
+        method: 'GET',
+        headers: {
+          'X-RapidAPI-Key': 'YOUR_API_KEY_HERE',
+          'X-RapidAPI-Host': 'instagram-downloader-download-instagram-videos-stories-reels.p.rapidapi.com'
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById("output").innerHTML = `<video src="${data.media}" controls width="100%"></video>`;
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('Something went wrong');
+      });
+    }
+  </script>
+</body>
+</html>
